@@ -4,3 +4,4 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 InfoGraphicly is a simple content aggregator and curator that uses the Read it Later API.
 
 Note to Abhi: Testing GitHub.
+Note to Dan: Confirmed test
