@@ -1,0 +1,27 @@
+<h1>Sessions#new</h1>
+
+<div class="span9 hero-body">
+  <div class="hero-unit">
+    <%= form_tag "/sessions" do %>
+    <h1>InfoGraphic.ly</h1>
+    <br>
+    <p>A beautifully simple content aggregator that uses data visualization to help you make sense of the information you consume.
+    </p>
+    <br>
+    <p>
+      <div class="well form-search">
+        <%= label_tag :user_name %>: <%= text_field_tag :user_name %>
+      </div>
+        <div class="well form-search">
+          <%= label_tag :password %>: <%= password_field_tag :password %>
+        </div>
+          <%= submit_tag "Log in" %> As a Returning User  
+    </p>
+          <% end %>
+    <div class="btn-group">
+      <a class="btn btn-primary btn-large" href="/users/new">Back to New User</a>
+    </div>
+  </div>
+</div>
+      
+
