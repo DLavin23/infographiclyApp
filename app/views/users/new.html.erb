@@ -1,46 +1,47 @@
-<div class="span9 hero-body">
-  <div class="hero-unit">
-    <h1>InfoGraphic.ly</h1>
-    <br>
-    <p>A beautifully simple content aggregator that uses data visualization to help you make sense of the information you consume.</p>
-    <br>
-    <div class="well form-search">
-          <%= form_for(@user) do |f| %>
-            <% if @user.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-                <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-                </ul>
-              </div>
-            <% end %>
 
-          <p>
-            <%= f.label :user_name %><br />
-            <%= f.text_field :user_name %>
-          </p>
-          <p>
-            <%= f.label :password %><br />
-            <%= f.password_field :password %>
-          </p>
-          <p>
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation %>
-          </p>
-          <p>
-            <%= f.label :email %><br />
-            <%= f.text_field :email %>
-          </p>
-          <div class="btn-group">
-            <%= f.submit "Sign up" %> Sign up with your Read It Later Account and Password
-          </div>
-        <% end %>
-          <div class="btn-group"
-            <%= link_to 'Not your first time here??', user_url(:returning) %>
-            <a class="btn btn-primary btn-large" href="/users/returning">Returning User</a> 
-          </div>
+
+<h4 style="color:blue;"><%= notice %></h4>
+
+<div class="span8 hero-unit">
+  <h2>Sign Up With Your Read It Later User Name</h2>
+  <br>
+  <div class="well form-inline">
+    <%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <p>
+      <%= f.label :user_name %><br />
+      <%= f.text_field :user_name %>
+    </p>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <div class="btn-group">
+      <%= f.submit "Sign up" %>
+      <a class="btn btn-primary" href="">Sign Up</a>
+    </div>
+  <% end %>
+    <div class="btn-group"
+      <%= link_to 'Not your first time here??', user_url(:returning) %>
+      <a class="btn btn-primary" href="/login">Returning User</a> 
+    </div>
     </div>
   </div>
 </div>

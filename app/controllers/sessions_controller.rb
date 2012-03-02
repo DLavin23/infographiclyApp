@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   
   def logout
     reset_session
-    redirect_to users_url, :notice => "Thanks for using InfoGraphic.ly, come back soon!"
+    redirect_to new_user_url, :notice => "Thanks for using InfoGraphic.ly, come back soon!"
   end
   
 end
