@@ -1,0 +1,10 @@
+<h1>Articles#index</h1>
+<p>Find me in app/views/articles/index.html.erb</p>
+
+<%= @user.id %>
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>Title: <%= article.title %> | URL: <%= link_to article.url, article.url, :target => '_blank' %></li>
+  <% end %>
+</ul>

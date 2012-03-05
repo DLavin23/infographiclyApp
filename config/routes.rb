@@ -1,5 +1,9 @@
 InfographiclyApp::Application.routes.draw do
  
+  get "articles/index", :as => :articles
+
+  get "articles/show", :as => :article
+
   root :to => "pages#home"
  
   get 'home' => "pages#home"
