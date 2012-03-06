@@ -1,7 +1,9 @@
-<h1>Reading List</h1>
-<br>
-<h2>Welcome, <%= @user.user_name %></h2>
-<br>
+<div class="bar">
+  <h1>Reading List</h1>
+  <br>
+  <h2>Welcome, <%= @user.user_name %></h2>
+</div>
+<section>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -26,3 +28,5 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @articles %>
+</section>
