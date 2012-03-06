@@ -15,8 +15,8 @@ class Article < ActiveRecord::Base
       new_article.item_id = article[1]["item_id"]
       new_article.title = article[1]["title"]
       new_article.url = article[1]["url"]
-      new_article.time_added = article[1]["time_added"]
-      new_article.time_updated = article[1]["time_updated"]
+      new_article.time_added = Time.at((article[1]["time_added"]).to_i).strftime("%B %d, %Y %I:%M%p")
+      new_article.time_updated = Time.at((article[1]["time_updated"]).to_i).strftime("%B %d, %Y %I:%M%p")
       new_article.state = article[1]["state"]
       new_article.shortlink = URI(article[1]["url"]).host.sub(/^www\./,"")
       new_article.source = new_article.shortlink.split('.')[0]
