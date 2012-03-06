@@ -5,8 +5,11 @@ class ArticlesController < ApplicationController
   def index
     @user = User.find_by_id session[:user_id]  
     @articles = Article.where("user_id = ?", "#{@user.id}")
+    if params[:search].present?
+      @search = params[:search]
+      @articles = @articles.where("title LIKE ?", "%#{params[:search]}%")
+    end
     @articles = @articles.order('time_added desc').page(params[:page]).per(10)
-  
   end  
   
   # def update
