@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
   validates :item_id, :uniqueness => true
   
   
-  def self.parse_json(list, userid)
+  def self.populate_db(list, userid)
     list.each do |article|
       new_article = Article.new
       new_article.item_id = article[1]["item_id"]

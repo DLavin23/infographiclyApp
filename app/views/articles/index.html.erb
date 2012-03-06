@@ -1,10 +1,20 @@
 <div class="bar">
-  <h1>Reading List</h1>
-  <br>
-  <h2>Welcome, <%= @user.user_name %></h2>
+  <h1>Welcome, <em><%= @user.user_name %></em></h1>
+  <h2>Here's Your Reading List</h2>
 </div>
 <br>
-<br>
+
+<div class="search">
+	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
+	    <%= text_field_tag :search, params[:search], :placeholder => "Search by title", :class => "input-long search-query" %>
+	    <%= submit_tag "Search", :class => "btn" %>
+	<% end %>
+	<% if @search.present? %>
+		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
+	<% end %>
+</div>
+
+
 <section>
 <table class="table table-bordered table-striped">
   <thead>
