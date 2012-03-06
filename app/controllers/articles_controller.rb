@@ -1,17 +1,18 @@
+<<<<<<< HEAD
 require 'open-uri'
+=======
+# require 'open-uri'
+>>>>>>> upstream/master
 
 class ArticlesController < ApplicationController
   
   def index
     @user = User.find_by_id session[:user_id]  
     @articles = Article.where("user_id = ?", "#{@user.id}")
-    @articles = @articles.order('time_added asc').page(params[:page]).per(10)
+    @articles = @articles.order('time_added desc').page(params[:page]).per(10)
   
   end
-
-  def show
   
-  end
   
   # def update
   #   # Currently, updating time_added and time_updated on articles but in 
@@ -30,6 +31,5 @@ class ArticlesController < ApplicationController
   #     end
   #   end
   # end
-
 
 end

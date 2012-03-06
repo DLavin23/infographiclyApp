@@ -3,6 +3,8 @@
   <br>
   <h2>Welcome, <%= @user.user_name %></h2>
 </div>
+<br>
+<br>
 <section>
 <table class="table table-bordered table-striped">
   <thead>
@@ -10,6 +12,7 @@
       <th>Title: </th>
       <th>URL: </th>
       <th>Status: </th>
+      <th>Time_added: </th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +26,9 @@
       </td>
       <td>
         <%= status(article.state) %>
+      </td>
+      <td>
+        <%= article.time_added %>
       </td>
     </tr>
     <% end %>

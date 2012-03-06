@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   
   def destroy
     user = User.find_by_id(params[:id])
+    Article.where("user_id = ?", "#{user.id}").destroy_all
     user.destroy
     redirect_to users_url, :notice => 'You no longer exist!'
   end
