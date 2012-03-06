@@ -1,18 +1,24 @@
-# require 'open-uri'
+require 'open-uri'
 
 class ArticlesController < ApplicationController
   
   def index
     @user = User.find_by_id session[:user_id]  
     @articles = Article.where("user_id = ?", "#{@user.id}")
+    if params[:search].present?
+      @search = params[:search]
+      @articles = @articles.where("title LIKE ?", "%#{params[:search]}%")
+    end
     @articles = @articles.order('time_added desc').page(params[:page]).per(10)
+  end  
   
-  end
-
-  # def update 
-  #  articles = Article.where("user_id = ?", "#{session[:user_id]}")
-  #  user = User.find_by_id session[:user_id]  
-  #   get_list = JSON.parse(open("https://readitlaterlist.com/v2/stats?username=#{user.user_name}&password=#{user.password}&apikey=e7ad2l8bTg2d4g4459A4d07Obdg7QKMn").read)["list"]
+  # def update
+  #   # Currently, updating time_added and time_updated on articles but in 
+  #   # future it should check stats api to check if new articles hv been 
+  #   # added and then populate the database
+  #   
+  #   articles = Article.where("user_id = ?", "#{session[:user_id]}")
+  #   get_list  = JSON.parse(open("https://readitlaterlist.com/v2/stats?username=#{user.user_name}&password=#{user.password}&apikey=e7ad2l8bTg2d4g4459A4d07Obdg7QKMn").read)["list"]
   #   get_list.each do |article|
   #     current_article = Article.find_by_item_id article[1]["item_id"]
   #     if current_article.time_added != article[1]["time_added"]
@@ -23,11 +29,5 @@ class ArticlesController < ApplicationController
   #     end
   #   end
   # end
-
-  def show
-  
-  end
-  
-
 
 end

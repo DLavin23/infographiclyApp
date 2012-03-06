@@ -1,7 +1,6 @@
 InfographiclyApp::Application.routes.draw do
  
   get "articles/index", :as => :articles
-
   get "articles/show", :as => :article
   
   get "update" => "articles#update"
