@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_id: MyString
+  url: MyString
+  title: MyString
+  state: 1
+  shortlink: MyString
+  source: MyString
+  time_added: 2012-03-05 12:40:15
+  time_update: 2012-03-05 12:40:15
+  category: MyString
+
+two:
+  item_id: MyString
+  url: MyString
+  title: MyString
+  state: 1
+  shortlink: MyString
+  source: MyString
+  time_added: 2012-03-05 12:40:15
+  time_update: 2012-03-05 12:40:15
+  category: MyString

@@ -50,6 +50,10 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.6.5)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     less (2.0.9)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
@@ -122,6 +126,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
+  kaminari
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
   sqlite3

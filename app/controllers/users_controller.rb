@@ -30,14 +30,14 @@ class UsersController < ApplicationController
   
   def create
     user = User.new(params[:user])
-    if open("https://readitlaterlist.com/v2/auth?username=#{params[:user][:user_name]}&password=#{params[:user][:password]}&apikey=#{abhi_api_key}")
-      redirect_to users_url, :notice => "Sorry, you need to provide a ReaditLater username and/or password!"
-    end
     
     if user.save
-      redirect_to users_url, :notice => "Welcome, #{user.user_name} thanks for signing up!"
-    else
-      redirect_to users_url, :notice => "Sorry, your passwords did not match!"
+    list  = JSON.parse(open("https://readitlaterlist.com/v2/get?username=#{user.user_name}&password=#{user.password}&apikey=e7ad2l8bTg2d4g4459A4d07Obdg7QKMn").read)["list"]
+    Article.parse_json(list, user.id)
+    session[:user_id] = user.id
+    redirect_to articles_url, :notice => "Welcome, #{user.user_name} thanks for signing up!"    
+    else 
+      redirect_to new_user_url, :notice => "There is already a user with this Read it Later Account"
     end
   end
 
