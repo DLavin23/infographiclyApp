@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    @user = User.find_by_user_name(params[:user_name])
+    @user = User.find_by_user_name(params[:user_name].downcase)
     if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to articles_url, :notice => "Welcome to InfoGraphic.ly, #{@user.user_name}"
