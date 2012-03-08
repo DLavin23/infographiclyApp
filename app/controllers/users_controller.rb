@@ -33,6 +33,8 @@ class UsersController < ApplicationController
     user = User.new(params[:user])
     if user.save
     list  = JSON.parse(open("https://readitlaterlist.com/v2/get?username=#{user.user_name}&password=#{user.password}&apikey=e7ad2l8bTg2d4g4459A4d07Obdg7QKMn").read)["list"]
+    stats =  JSON.parse(open("https://readitlaterlist.com/v2/stats?username=#{user.user_name}&password=#{user.password}&apikey=e7ad2l8bTg2d4g4459A4d07Obdg7QKMn").read)
+    user.fill_stats(stats)
     Article.populate_db(list, user.id)
     session[:user_id] = user.id
     redirect_to articles_url, :notice => "Welcome, #{user.user_name} thanks for signing up!"    

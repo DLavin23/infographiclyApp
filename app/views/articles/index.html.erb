@@ -1,4 +1,6 @@
 <div class="bar">
+	<p>Read it Later User Since: <%= @user.user_since.strftime("%B %d, %Y") %> <br/> Articles Saved: <%= @user.count_list %>
+	<br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
   <h1>Welcome, <em><%= @user.user_name %></em></h1>
   <h2>Here's Your Reading List</h2>
 </div>
