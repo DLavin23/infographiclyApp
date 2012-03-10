@@ -1,6 +1,7 @@
 
 <div class="alert alert-info">
-  <%= notice %></div>
+  <%= notice %>
+</div>
 <!-- <h4 style="color:blue;"><%= notice %></h4> -->
 
 <div class="span8 hero-unit">
@@ -34,14 +35,14 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </p>
-    <div class="btn-group">
+    <div class="btn-btn-primary">
       <%= f.submit "Sign up" %>
-  
     </div>
+      
   <% end %>
-    <div class="btn-group"
-      <%= link_to 'Not your first time here??', user_url(:returning) %>
-      <a class="btn btn-primary" href="/login">Returning User</a> 
+  
+    <div class="btn btn-primary"
+      <%= link_to 'Returning User', user_url(:returning) %>
     </div>
     </div>
   </div>

@@ -21,6 +21,7 @@
       <th>Title: </th>
       <th>URL: </th>
       <th>Status: </th>
+      <th>Category: </th>
       <th>Time_added: </th>
     </tr>
   </thead>
@@ -35,6 +36,9 @@
       </td>
       <td>
         <%= status(article.state) %>
+      </td>
+      <td>
+        <%= article.source %>
       </td>
       <td>
         <%= article.time_added %>

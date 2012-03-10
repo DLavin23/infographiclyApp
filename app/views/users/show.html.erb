@@ -3,6 +3,16 @@
 <p>Read it Later User Since: <%= @user.user_since.strftime("%B %d, %Y") %> <br/> Articles Saved: <%= @user.count_list %>
 <br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
 
+<div class="search">
+	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
+	    <%= text_field_tag :search, params[:search], :placeholder => "Search by title", :class => "input-long search-query" %>
+	    <%= submit_tag "Search", :class => "btn" %>
+	<% end %>
+	<% if @search.present? %>
+		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
+	<% end %>
+</div>
+
 <h2>Reading Categories</h2>
   <ul>
     <% my_sources = [] %>
