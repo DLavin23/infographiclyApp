@@ -10,6 +10,7 @@ InfographiclyApp::Application.routes.draw do
   get 'home' => "pages#home"
   get 'about' => "pages#about"
   get 'contact' => "pages#contact"
+  get 'sources/:source' => "pages#show_source"
 
   
   get "login" => "sessions#new"

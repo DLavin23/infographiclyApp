@@ -32,4 +32,22 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def self.assign_category
+    articles = Article.all[0..150]
+    articles.each do |article|
+      article.update_attribute :source, "Business"
+    end    
+    articles = Article.all[151..300]
+    articles.each do |article|
+      article.update_attribute :source, "Sports"
+    end    
+    articles = Article.all[301..450]
+    articles.each do |article|
+      article.update_attribute :source, "Entertainment"
+    end
+    articles = Article.all[451..930]
+    articles.each do |article|
+      article.update_attribute :source, "Technology"
+    end  
+  end
 end

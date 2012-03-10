@@ -1,5 +1,16 @@
-<h2>User Details</h2>
+<h1>User Reading Stats</h1>
 
-User Name: <%= @user.user_name %>
-Email: <%= @user.email %>
-Password: <%= @user.password %>
+<p>Read it Later User Since: <%= @user.user_since.strftime("%B %d, %Y") %> <br/> Articles Saved: <%= @user.count_list %>
+<br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
+
+<h2>Reading Categories</h2>
+  <ul>
+    <% my_sources = [] %>
+    <% @user.articles.each do |article| %>
+      <% if !my_sources.include?(article.source) %>
+        <li><%= link_to article.source, "/sources/#{article.source}" %></li>
+        <% my_sources << article.source %>
+      <% end %>
+    <% end %>
+  </ul>
+  

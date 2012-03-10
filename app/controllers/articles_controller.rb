@@ -3,7 +3,7 @@ require 'open-uri'
 class ArticlesController < ApplicationController
   
   def index
-    @user = User.find_by_id session[:user_id]  
+    @user = current_user 
     @articles = Article.where("user_id = ?", "#{@user.id}")
     if params[:search].present?
       @search = params[:search]

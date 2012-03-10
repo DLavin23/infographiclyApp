@@ -1,0 +1,30 @@
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title: </th>
+      <th>URL: </th>
+      <th>Status: </th>
+      <th>Time_added: </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+    <tr>
+      <td>
+        <%= article.title %>
+      </td>
+      <td>
+        <%= link_to article.shortlink, article.url, :target => '_blank' %>
+      </td>
+      <td>
+        <%= status(article.state) %>
+      </td>
+      <td>
+        <%= article.time_added %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @articles %>

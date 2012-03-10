@@ -13,5 +13,11 @@ class PagesController < ApplicationController
 
   def contact
   end
+  
+  def show_source
+    @source = params[:source]
+    @articles = current_user.articles.where("source = ?", "#{@source}")
+    @articles = @articles.order('time_added desc').page(params[:page]).per(20)
+  end
 
 end

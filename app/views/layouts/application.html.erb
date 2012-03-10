@@ -72,7 +72,9 @@
                 <li><%= link_to "Home", "/home"  %></li>
                 <li><%= link_to "About Us", "/about"  %></li>
                 <li><%= link_to "Contact Us", "/contact"  %></li>
-      
+                <% if current_user.present? %>
+                <li><%= link_to "Dashboard", "/users/#{current_user.id}" %></li>
+                <% end %>
               </ul>
             </div><!--/.well -->
             <aside>
