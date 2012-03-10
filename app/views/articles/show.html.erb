@@ -1,4 +1,12 @@
-<h1>Articles Information</h1>
+<h2><%= @article.title %></h2>
+<hr/>
+<%= form_tag("/articles/#{@article.id}/tags") do %>
+  <%= text_field_tag :tags %>
+  <%= submit_tag("Add Tags") %>
+<% end %>
 
-
-
+<% if @article.categories.any? %>
+  <% @article.categories.each do |tag| %>
+    <%= tag %>
+  <% end %>
+<% end %>

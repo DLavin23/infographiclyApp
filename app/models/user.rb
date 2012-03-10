@@ -2,6 +2,7 @@ require 'date'
 
 class User < ActiveRecord::Base
   
+  acts_as_tagger
   has_secure_password
   has_many :articles
   has_many :tags

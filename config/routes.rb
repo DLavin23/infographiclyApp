@@ -1,7 +1,8 @@
 InfographiclyApp::Application.routes.draw do
  
   get "articles/index", :as => :articles
-  get "articles/show", :as => :article
+  get "articles/:id" => 'articles#show', :as => :article
+  post "articles/:id/tags" => 'articles#tag'
   
   get "update" => "articles#update"
 

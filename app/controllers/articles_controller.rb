@@ -12,6 +12,17 @@ class ArticlesController < ApplicationController
     @articles = @articles.order('time_added desc').page(params[:page]).per(10)
   end  
   
+  def show
+    @article = Article.find_by_id params[:id]
+  end
+  
+  def tag
+    @tags = params[:tags]
+    @article = Article.find_by_id params[:id]
+    current_user.tag(@article, :with => @tags, :on => :categories)
+    redirect_to article_url(@article.id)
+  end
+  
   # def update
   #   # Currently, updating time_added and time_updated on articles but in 
   #   # future it should check stats api to check if new articles hv been 

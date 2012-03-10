@@ -29,7 +29,7 @@
     <% @articles.each do |article| %>
     <tr>
       <td>
-        <%= article.title %>
+        <%= link_to article.title, article_url(article.id) %>
       </td>
       <td>
         <%= link_to article.shortlink, article.url, :target => '_blank' %>
