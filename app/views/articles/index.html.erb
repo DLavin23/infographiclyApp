@@ -1,53 +1,51 @@
-<div class="bar">
-  <h1>Welcome, <em><%= @user.user_name %></em></h1>
-  <h2>Here's Your Reading List</h2>
-</div>
-<br>
-
-<div class="search">
-	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
-	    <%= text_field_tag :search, params[:search], :placeholder => "Search by title", :class => "input-long search-query" %>
-	    <%= submit_tag "Search", :class => "btn" %>
-	<% end %>
-	<% if @search.present? %>
-		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
-	<% end %>
+<div class="hero-unit">
+  <h2>Welcome to InfoGraphic.ly, <em><%= @user.user_name %></em>!</h2>
+  <hr />
+  <div class="search">
+  	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
+  	    <%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "input-long search-query" %>
+  	    <%= submit_tag "Search", :class => "btn btn-primary" %>
+  	<% end %>
+  	<% if @search.present? %>
+  		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
+  	<% end %>
+  </div>
 </div>
 
 <section>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Title: </th>
-      <th>URL: </th>
-      <th>Status: </th>
-      <th>Category: </th>
-      <th>Time_added: </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |article| %>
-    <tr>
-      <td>
-        <%= link_to article.title, article_url(article.id) %>
-      </td>
-      <td>
-        <%= link_to article.shortlink, article.url, :target => '_blank' %>
-      </td>
-      <td>
-        <%= status(article.state) %>
-      </td>
-      <td>
-        <%= article.source %>
-      </td>
-      <td>
-        <%= article.time_added %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title: </th>
+        <th>URL: </th>
+        <th>Status: </th>
+        <th>Category: </th>
+        <th>Time_added: </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+      <tr>
+        <td>
+          <%= link_to article.title, article_url(article.id) %>
+        </td>
+        <td>
+          <%= link_to article.shortlink, article.url, :target => '_blank' %>
+        </td>
+        <td>
+          <%= status(article.state) %>
+        </td>
+        <td>
+          <%= article.source %>
+        </td>
+        <td>
+          <%= article.time_added %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
  <%= paginate @articles %>
 
 </section>
