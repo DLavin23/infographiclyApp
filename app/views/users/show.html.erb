@@ -1,4 +1,6 @@
 <div class="hero-unit">
+  <h2>Welcome to InfoGraphic.ly, <em><%= @user.user_name %></em>!</h2>
+  <hr />
   <div class="search">
   	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
   	    <%= text_field_tag :search, params[:search], :placeholder => "Search for Article", :class => "input-long search-query" %>
@@ -25,4 +27,8 @@
         <% end %>
       <% end %>
     </ul>
+  <div id="chart_div"></div>
 </div>
+
+
+    

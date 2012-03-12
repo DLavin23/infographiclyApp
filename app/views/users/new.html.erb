@@ -6,7 +6,7 @@
 
 <div class="span8 hero-unit">
   <h2>Sign Up With Your Read It Later User Name</h2>
-  <br>
+  <hr />
   <div class="well form-inline">
     <%= form_for(@user) do |f| %>
       <% if @user.errors.any? %>
@@ -35,12 +35,14 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </p>
+    <hr />
       <%= f.submit "Sign up", :class => "btn btn-primary" %>
 
   <% end %>
   
-    <div class="btn btn-primary"
-      <%= link_to 'Returning User', user_url(:returning) %>
+
+    <div class="btn-group">
+      <a class="btn btn-primary" href="/login">Returning User</a>
     </div>
     </div>
   </div>

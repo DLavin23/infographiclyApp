@@ -1,17 +1,18 @@
-<div class="span8 hero-unit">
+<div class="hero-unit">
   <h2>Sign in as Returning User</h2>
-  <br>
+  <hr />
     <%= form_tag "/sessions" do %>
     <p>
       <div class="well form-search">
         <%= label_tag :user_name %>: <%= text_field_tag :user_name %>
       </div>
-        <div class="well form-search">
-          <%= label_tag :password %>: <%= password_field_tag :password %>
-        </div>
-          <%= submit_tag "Log in" %> 
+      <div class="well form-search">
+        <%= label_tag :password %>: <%= password_field_tag :password %>
+      </div>
+      <hr />
+        <%= submit_tag "Log in", :class => "btn btn-primary" %> 
     </p>
-          <% end %>
+        <% end %>
     <div class="btn-group">
       <a class="btn btn-primary" href="/users/new">Back to New User</a>
     </div>
