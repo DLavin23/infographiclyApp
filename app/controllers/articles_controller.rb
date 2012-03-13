@@ -17,9 +17,14 @@ class ArticlesController < ApplicationController
   end
   
   def tag
-    @tags = params[:tags]
+    @new_tags = params[:tags].split(',')
     @article = Article.find_by_id params[:id]
-    current_user.tag(@article, :with => @tags, :on => :categories)
+    @current_tags = []
+    @article.categories_from(current_user).each do |tag|
+      @current_tags << tag
+    end
+    @updated_tags = @current_tags << @new_tags
+    current_user.tag(@article, :with => @updated_tags, :on => :categories)
     redirect_to article_url(@article.id)
   end
   
