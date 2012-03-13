@@ -8,7 +8,6 @@ gem 'kaminari'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem "twitter-bootstrap-rails"
 gem 'acts-as-taggable-on', '~> 2.2.2'
 
 

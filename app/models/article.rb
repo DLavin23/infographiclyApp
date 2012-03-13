@@ -5,7 +5,6 @@ class Article < ActiveRecord::Base
   
   acts_as_taggable_on :categories
   belongs_to :user
-  has_many :tags
   
   validates :item_id, :uniqueness => true
   
