@@ -1,11 +1,12 @@
 
 <div class="alert alert-info">
-  <%= notice %></div>
+  <%= notice %>
+</div>
 <!-- <h4 style="color:blue;"><%= notice %></h4> -->
 
 <div class="span8 hero-unit">
   <h2>Sign Up With Your Read It Later User Name</h2>
-  <br>
+  <hr />
   <div class="well form-inline">
     <%= form_for(@user) do |f| %>
       <% if @user.errors.any? %>
@@ -34,14 +35,14 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </p>
-    <div class="btn-group">
-      <%= f.submit "Sign up" %>
-  
-    </div>
+    <hr />
+      <%= f.submit "Sign up", :class => "btn btn-primary" %>
+
   <% end %>
-    <div class="btn-group"
-      <%= link_to 'Not your first time here??', user_url(:returning) %>
-      <a class="btn btn-primary" href="/login">Returning User</a> 
+  
+
+    <div class="btn-group">
+      <a class="btn btn-primary" href="/login">Returning User</a>
     </div>
     </div>
   </div>

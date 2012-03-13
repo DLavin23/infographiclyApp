@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Infographicly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfographiclyApp</title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -11,13 +12,31 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-       
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['imagepiechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows(5);
+        data.setValue(0, 0, 'Business');
+        data.setValue(0, 1, 11);
+        data.setValue(1, 0, 'Entertainment');
+        data.setValue(1, 1, 2);
+        data.setValue(2, 0, 'Technology');
+        data.setValue(2, 1, 2);
+        data.setValue(3, 0, 'Sports');
+        data.setValue(3, 1, 2);
+        data.setValue(4, 0, 'Politics');
+        data.setValue(4, 1, 7);
+
+        var chart = new google.visualization.ImagePieChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 430, height: 240, title: 'What Im Reading'});
       }
-    </style>
+    </script>
 
     <!-- Le fav and touch icons -->
     <link href="images/favicon.ico" rel="shortcut icon">
@@ -31,66 +50,41 @@
         <div class="navbar-inner">
             <div class="container-fluid">
             <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-              <span class="i-bar"></span>
-              <span class="i-bar"></span>
-              <span class="i-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/home">Infographic.ly</a>
+            <a class="brand" href="/home">InfoGraphic.ly</a>
             <div class="container-fluid nav-collapse">
-              <ul class="nav pull-right">
-                <li>
-                  <a href="#">Beta</a>
-                </li>
-                <li class="divider-vertical"></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Try it out!<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="/users/new">Sign Up</a>
-                    </li>
-                    <li>
-                      <a href="/login">Log In</a>
-                    </li>
-                    <li>
-                      <a href="/logout">Logout</a>
-                    </li>
-                  </ul>
+              <ul class="nav">
+                <li><%= link_to "Home", "/home"  %></li>
+                <li><%= link_to "About", "/about"  %></li>
+                <li><%= link_to "Contact", "/contact"  %></li>
+                <li class="divider-vertical">
+                  <% if current_user.present? %>
+                  <li><%= link_to "Dashboard", "/users/#{current_user.id}" %></li>
+                  <li><%= link_to "Article List", "/articles/index" %></li>
+                  <li><%= link_to "Profile", "/profile" %></li>
+                  <a class="btn btn-primary" href="/logout">Logout</a></li>
+                  <% else %>
+                  <li><%= link_to "Sign Up", "/users/new"  %></li>
+                  <li><%= link_to "Login", "/login"  %></li>
+                  <% end %>
                 </li>
               </ul>
-            </div>
             </div><!--/.nav-collapse -->
           </div>
         </div>
       </div>
-  
-      <div class="container-fluid">
-         <div class="row-fluid">
-          <div class="span2">
-            <div class="well sidebar-nav">
-              <ul class="nav nav-list">
-                <li class="nav-header">Side Navigation</li>
-                <li><%= link_to "Home", "/home"  %></li>
-                <li><%= link_to "About Us", "/about"  %></li>
-                <li><%= link_to "Contact Us", "/contact"  %></li>
-                <% if current_user.present? %>
-                <li><%= link_to "Dashboard", "/users/#{current_user.id}" %></li>
-                <% end %>
-              </ul>
-            </div><!--/.well -->
-            <aside>
-              <h2>Reading Categories</h2>
-            </aside>
-          </div><!--/span-->
-          <div class="span9">
-            <%= yield %>
-          </div>
-        </div><!--/row-->
-      
 
-      
-        <footer>
-          <p>&copy; Company 2012</p>
-        </footer>
+      <div class="span9">
+        <%= yield %>
+      </div>
+    </div><!--/row-->
+  <!-- <hr />
+  <footer>
+    <p>&copy; InfoGraphic.ly 2012</p>
+  </footer> -->
 
       </div> <!-- /container -->
 
@@ -98,7 +92,7 @@
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
       <%= javascript_include_tag "application" %>
-    
-    </header>  
+  </aside>
+  </header>
   </body>
 </html>

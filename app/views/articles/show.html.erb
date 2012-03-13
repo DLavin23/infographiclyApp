@@ -1,2 +1,14 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="hero-unit">
+  <h2><%= @article.title %></h2>
+  <hr/>
+  <%= form_tag("/articles/#{@article.id}/tags") do %>
+    <%= text_field_tag :tags %>
+    <%= submit_tag("Add Tags") %>
+  <% end %>
+
+  <% if @article.categories.any? %>
+    <% @article.categories.each do |tag| %>
+      <%= tag %>
+    <% end %>
+  <% end %>
+</div>
