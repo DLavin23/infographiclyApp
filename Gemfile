@@ -8,6 +8,7 @@ gem 'kaminari'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 
 
 # Gems used only for assets and not required
