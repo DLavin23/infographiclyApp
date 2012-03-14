@@ -7,7 +7,8 @@ InfographiclyApp::Application.routes.draw do
   
   get "update" => "articles#update"
   
-
+  post "tags/:id" => "tags#tag"
+  
   get 'home' => "pages#home"
   get 'about' => "pages#about"
   get 'contact' => "pages#contact"

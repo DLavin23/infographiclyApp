@@ -3,7 +3,7 @@ require 'uri'
 
 class Article < ActiveRecord::Base
   
-  acts_as_taggable_on :categories
+  acts_as_taggable_on :categories 
   belongs_to :user
   has_many :tags
   
@@ -26,6 +26,20 @@ class Article < ActiveRecord::Base
     end
   end
   
+  # def pull_article(url)
+  #   response = HTTParty.get(url)
+  #   parse(response)
+  # end
+  # 
+  # def parse(text)
+  #   top_words = text.split(" ").map()
+  #   top_words.each do 
+  #     add_tag_to_article(top_word, article)
+  # end
+  # 
+  # def add_tag_to_article
+  # end
+  
   def self.update_state(list)
     list.each do |article|
       current_article = Article.find_by_item_id article[1]["item_id"]
@@ -36,6 +50,7 @@ class Article < ActiveRecord::Base
   def self.assign_category
     articles = Article.all[0..150]
     articles.each do |article|
+      # pull_article(article.url)
       article.update_attribute :source, "Business"
     end    
     articles = Article.all[151..300]

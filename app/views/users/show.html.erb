@@ -1,23 +1,30 @@
-<div class="hero-unit">
-  <h2>Welcome to InfoGraphic.ly, <em><%= @user.user_name %></em>!</h2>
-  <hr />
-  <div class="search">
-  	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
-  	    <%= text_field_tag :search, params[:search], :placeholder => "Search for Article", :class => "input-long search-query" %>
-  	    <%= submit_tag "Search", :class => "btn btn-primary" %>
-  	<% end %>
-  	<% if @search.present? %>
-  		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
-  	<% end %>
-  </div>
-  <hr />
-  <h2>User Reading Stats</h2>
-  <hr />
-  <p>Read it Later User Since: <%= @user.user_since.strftime("%B %d, %Y") %> <br/> Articles Saved: <%= @user.count_list %>
-  <br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
-  <hr />
-  <h2>Reading Categories</h2>
-  <hr />
+<div class="dashboard">
+  <div class="hero-unit">
+    <h2>Welcome to InfoGraphic.ly, <em><%= @user.user_name %></em>!</h2>
+    <br >
+    <div class="search">
+    	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
+    	    <%= text_field_tag :search, params[:search], :placeholder => "Search for Article", :class => "input-long search-query" %>
+    	    <%= submit_tag "Search", :class => "btn btn-primary" %>
+    	<% end %>
+    	<% if @search.present? %>
+    		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
+    	<% end %>
+    </div>
+    <hr />
+    <h2>User Reading Stats</h2>
+    <div class="progress">
+      <div class="bar"
+           style="width: 65%;"></div>
+    </div>
+    <p><em>Read it Later User Since:</em> <%= @user.user_since.strftime("%B %d, %Y") %> <br/> </br> Articles Saved: <%= @user.count_list %>
+    <br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
+    <hr />
+    <h2>Tag Cloud</h2>
+    <hr />
+    <p>View Tags</p>
+    <p>Reading Categories</p>
+
     <ul>
       <% my_sources = [] %>
       <% @user.articles.each do |article| %>
@@ -27,7 +34,7 @@
         <% end %>
       <% end %>
     </ul>
-  <div id="chart_div"></div>
+  </div>
 </div>
 
 
