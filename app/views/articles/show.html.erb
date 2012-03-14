@@ -6,11 +6,13 @@
     <%= submit_tag("Add Tags") %>
   <% end %>
 
-<%#= @article.owner_tags_on(nil, :categories) %>
-
   <% if @article.categories_from(current_user).present? %>
-    <p><strong>MY TAGS:</strong> <% @article.categories_from(current_user).each do |tag| %>
-      <%= tag %>,
-    <% end %></p>
+    <p>
+		<strong>MY TAGS:</strong> 
+			<% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
+				<%= @article.owner_tags_on(current_user, :categories)[x] %>
+				<%= "," if  x < @article.owner_tags_on(current_user, :categories).count - 1 %>
+			<% end %>
+	</p>
   <% end %>
 </div>
