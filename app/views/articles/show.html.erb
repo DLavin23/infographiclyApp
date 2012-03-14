@@ -1,18 +1,22 @@
 <div class="hero-unit">
   <h2><%= @article.title %></h2>
   <hr/>
-  <%= form_tag("/articles/#{@article.id}/tags") do %>
+  <%= form_tag("/tags/#{@article.id}") do %>
     <%= text_field_tag :tags %>
-    <%= submit_tag("Add Tags") %>
+    <%= submit_tag "Add Tags", :class => "btn btn-primary" %>
   <% end %>
 
-  <% if @article.categories_from(current_user).present? %>
-    <p>
-		<strong>MY TAGS:</strong> 
-			<% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
-				<%= @article.owner_tags_on(current_user, :categories)[x] %>
-				<%= "," if  x < @article.owner_tags_on(current_user, :categories).count - 1 %>
-			<% end %>
-	</p>
+  <% if @article.categories_from(current_user) %>
+	  <p>
+	    <strong>My Tags:</strong>
+	    <% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
+	      <%= @article.owner_tags_on(current_user, :categories)[x] %>
+	      <%= "," if x < @article.owner_tags_on(current_user, :categories).count - 1 %>
+	    <% end %>
+	  </p>
   <% end %>
 </div>
+    
+    
+    
+    
