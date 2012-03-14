@@ -7,14 +7,13 @@
   <% end %>
 
   <% if @article.categories_from(current_user) %>
-  
-  <p>
-    <strong>My Tags:</strong>
-    <% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
-      <%= @article.owner_tags_on(current_user, :categories)[x] %>
-      <%= "," if x < @article.owner_tags_on(current_user, :categories).count - 1 %>
-    <% end %>
-  </p>
+	  <p>
+	    <strong>My Tags:</strong>
+	    <% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
+	      <%= @article.owner_tags_on(current_user, :categories)[x] %>
+	      <%= "," if x < @article.owner_tags_on(current_user, :categories).count - 1 %>
+	    <% end %>
+	  </p>
   <% end %>
 </div>
     
