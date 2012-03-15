@@ -44,7 +44,8 @@
                   <li><%= link_to "Dashboard", "/users/#{current_user.id}" %></li>
                   <li><%= link_to "Article List", "/articles/index" %></li>
                   <li><%= link_to "Profile", "/profile" %></li>
-                  <a class="btn btn-primary" href="/logout">Logout</a></li>
+                </ul>
+                <ul class="logout nav"><li><a class="btn btn-primary" href="/logout">Logout</a></li>
                   <% else %>
                   <li><%= link_to "Sign Up", "/users/new"  %></li>
                   <li><%= link_to "Login", "/login"  %></li>

@@ -24,6 +24,10 @@ class ArticlesController < ApplicationController
     redirect_to article_url(@article.id)
   end
   
+  # def tag_cloud
+  #    @tags = Article.tag_counts_on(:tags)
+  # end
+  
   # def update
   #   # Currently, updating time_added and time_updated on articles but in 
   #   # future it should check stats api to check if new articles hv been 

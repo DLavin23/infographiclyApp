@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_user_name(params[:user_name].downcase)
     if @user.present? && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to user_url(@user.id), :notice => "Welcome to InfoGraphic.ly, #{@user.user_name}"
+      redirect_to "/users/#{@user.id}", :notice => "Welcome to InfoGraphic.ly, #{@user.user_name}"
     else
       redirect_to users_url, :notice => 'Sorry, that User Name and/or Password is incorrect'
     end
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   
   def logout
     reset_session
-    redirect_to new_user_url, :notice => "Thanks for using InfoGraphic.ly, come back soon!"
+    redirect_to root_url, :notice => "Thanks for using InfoGraphic.ly, come back soon!"
   end
   
 end

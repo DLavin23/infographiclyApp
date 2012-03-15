@@ -1,5 +1,7 @@
 module ArticlesHelper
 
+  # include ActsAsTaggableOn::TagsHelper
+  
   def status(current_state)
     
     if current_state == 0 
@@ -8,5 +10,6 @@ module ArticlesHelper
       return "Read"
     end
   end
-
+  
+  
 end
