@@ -8,7 +8,7 @@
     	    <%= submit_tag "Search", :class => "btn btn-primary" %>
     	<% end %>
     	<% if @search.present? %>
-    		<a href="/articles/index"><i class="icon-remove-circle"> </i>Clear search</a>
+    		<a href="/users/<%= @user.id %>"><i class="icon-remove-circle"> </i>Clear search</a>
     	<% end %>
     </div>
     <hr />
@@ -22,9 +22,8 @@
     <hr />
     <h2>Tag Cloud</h2>
     <hr />
-    <p>View Tags</p>
     <p>Reading Categories</p>
-
+    <hr />
     <ul>
       <% my_sources = [] %>
       <% @user.articles.each do |article| %>
