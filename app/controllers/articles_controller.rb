@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   
   def index
     @user = current_user 
-    @articles = Article.where("user_id = ?", "#{@user.id}")
+    if params[:categories].present?
+      @articles = current_user.articles.tagged_with(params[:categories], :on => :categories)
+    else
+      @articles = Article.where("user_id = ?", "#{@user.id}")
+    end
     if params[:search].present?
       @search = params[:search]
       @articles = @articles.where("title LIKE ?", "%#{params[:search]}%")
@@ -24,9 +28,8 @@ class ArticlesController < ApplicationController
     redirect_to article_url(@article.id)
   end
   
-  # def tag_cloud
-  #    @tags = Article.tag_counts_on(:tags)
-  # end
+  def tag_cloud
+  end
   
   # def update
   #   # Currently, updating time_added and time_updated on articles but in 

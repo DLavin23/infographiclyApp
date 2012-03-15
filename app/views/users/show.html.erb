@@ -1,6 +1,6 @@
 <div class="dashboard">
   <div class="hero-unit">
-    <h2>Welcome to InfoGraphic.ly, <em><%= @user.user_name %></em>!</h2>
+    <h2>Welcome to InfoGraphic.ly, <em><%= current_user.user_name %></em>!</h2>
     <br >
     <div class="search">
     	<%= form_tag "/articles/index", :method => 'get', :class => "form-search" do %>
@@ -15,19 +15,22 @@
     <h2>User Reading Stats</h2>
     <div class="progress">
       <div class="bar"
-           style="width: <%= number_to_percentage(@user.count_read.to_f * 100 / @user.count_list) %>;"></div>
+           style="width: <%= number_to_percentage(current_user.count_read.to_f * 100 / current_user.count_list) %>;"></div>
     </div>
-    <p><em>Read it Later User Since:</em> <%= @user.user_since.strftime("%B %d, %Y") %> <br/> </br> Articles Saved: <%= @user.count_list %>
-    <br/> Articles Read: <%= @user.count_read %> <br/> Articles Unread: <%= @user.count_unread %></p>
+    <p><em>Read it Later User Since:</em> <%= current_user.user_since.strftime("%B %d, %Y") %> <br/> </br> Articles Saved: <%= current_user.count_list %>
+    <br/> Articles Read: <%= current_user.count_read %> <br/> Articles Unread: <%= current_user.count_unread %></p>
     <hr />
     <h2>Tag Cloud</h2>
+	<% tag_cloud(@categories, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+	  <%= link_to tag.name, articles_url(:categories => tag.name), :class => css_class %>
+	<% end %>
     <hr />
     <p>View Tags</p>
     <p>Reading Categories</p>
 
     <ul>
       <% my_sources = [] %>
-      <% @user.articles.each do |article| %>
+      <% current_user.articles.each do |article| %>
         <% if !my_sources.include?(article.source) %>
           <li><%= link_to article.source, "/sources/#{article.source}" %></li>
           <% my_sources << article.source %>
