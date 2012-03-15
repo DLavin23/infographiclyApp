@@ -25,17 +25,23 @@
 	  <%= link_to tag.name, articles_url(:categories => tag.name), :class => css_class %>
 	<% end %>
     <hr />
-    <p>Reading Categories</p>
-    <hr />
-    <ul>
-      <% my_sources = [] %>
-      <% current_user.articles.each do |article| %>
-        <% if !my_sources.include?(article.source) %>
-          <li><%= link_to article.source, "/sources/#{article.source}" %></li>
-          <% my_sources << article.source %>
+    <h2>Reading Categories</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <% my_sources = [] %>
+        <% current_user.articles.each do |article| %>
+          <% if !my_sources.include?(article.source) %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to article.source, "/sources/#{article.source}" %></td>
+            <% my_sources << article.source %>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
