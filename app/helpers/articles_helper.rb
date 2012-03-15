@@ -1,6 +1,5 @@
 module ArticlesHelper
-
-  # include ActsAsTaggableOn::TagsHelper
+  include ActsAsTaggableOn::TagsHelper
   
   def status(current_state)
     

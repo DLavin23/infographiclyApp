@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @categories = current_user.articles.tag_counts_on(:categories)
   end
   
   def destroy
