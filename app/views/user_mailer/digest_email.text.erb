@@ -1,0 +1,9 @@
+Hi, <%= @user.user_name %>
+
+<% @user.articles.order("time_added desc")[0..4].each do |article|  %>
+	-- <%= article.title %>
+<% end %>
+ 
+To login to the site, just follow this link: <%= @url %>
+ 
+Thanks for using InfoGraphic.ly and have a great day!
