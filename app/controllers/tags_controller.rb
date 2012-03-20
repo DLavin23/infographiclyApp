@@ -8,4 +8,8 @@ class TagsController < ApplicationController
     redirect_to article_url(@article.id)
   end
   
+  def remove
+    
+  end
+  
 end
