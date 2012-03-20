@@ -3,10 +3,11 @@
   <hr />
     <%= form_tag "/sessions" do %>
     <p>
-      <div class="well form-search">
+      <div class="form-search">
         <%= label_tag :user_name %>: <%= text_field_tag :user_name %>
       </div>
-      <div class="well form-search">
+      <br>
+      <div class="form-search">
         <%= label_tag :password %>: <%= password_field_tag :password %>
       </div>
       <hr />

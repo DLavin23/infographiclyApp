@@ -1,11 +1,9 @@
-
-
 <h4 style="color:blue;"><%= notice %></h4>
 
 <div class="span8 hero-unit">
   <h2>Sign Up With Your Read It Later User Name</h2>
   <hr />
-  <div class="well form-inline">
+  <div class="form-inline">
     <%= form_for(@user) do |f| %>
       <% if @user.errors.any? %>
         <div id="error_explanation">
@@ -20,10 +18,6 @@
     <p>
       <%= f.label :user_name %><br />
       <%= f.text_field :user_name %>
-    </p>
-    <p>
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
     </p>
     <p>
       <%= f.label :password %><br />
