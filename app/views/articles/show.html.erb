@@ -10,7 +10,7 @@
 	  <p>
 	    <strong>My Tags:</strong>
 	    <% 0.upto(@article.owner_tags_on(current_user, :categories).count) do |x| %>
-	      <%= @article.owner_tags_on(current_user, :categories)[x] %>
+	      <%= @article.owner_tags_on(current_user, :categories)[x] %><a href="/tags/<%= @article.id %>/<%= @article.owner_tags_on(current_user, :categories)[x] %>"><i class="icon-remove-circle"></i></a>
 	      <%= "," if x < @article.owner_tags_on(current_user, :categories).count - 1 %>
 	    <% end %>
 	  </p>
