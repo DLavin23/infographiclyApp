@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hi <%= @user.user_name %>,</h1>
+    <p>
+		Here are the five most recent articles you wanted to read:
+		<ol>
+			<% @user.articles.order("time_added desc")[0..4].each do |article|  %>
+				<li><%= article.title %></li>
+			<% end %>
+		</ol><br/>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>
+    </p>
+    <p>Thanks for using InfoGraphic.ly and have a great day!</p>
+  </body>
+</html>

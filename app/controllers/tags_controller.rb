@@ -9,6 +9,7 @@ class TagsController < ApplicationController
   end
   
   def remove
-    @
+    
+  end
   
 end

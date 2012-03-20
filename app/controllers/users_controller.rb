@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     user.fill_stats(stats)
     Article.populate_db(list, user.id)
     session[:user_id] = user.id
+    UserMailer.digest_email(user).deliver
     redirect_to user_url(user.id), :notice => "Welcome, #{user.user_name} thanks for signing up!"    
     else 
       redirect_to new_user_url, :notice => "There is already a user with this Read it Later Account"
