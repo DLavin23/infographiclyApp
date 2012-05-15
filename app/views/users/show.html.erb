@@ -14,8 +14,7 @@
     <hr />
     <h2>User Reading Stats</h2>
     <div class="progress">
-      <div class="bar"
-           style="width: <%= number_to_percentage(current_user.count_read.to_f * 100 / current_user.count_list) %>;"></div>
+      <div class="bar"style="width: <%= number_to_percentage(current_user.count_read.to_f * 100 / current_user.count_list) %>;"></div>
     </div>
     <p><em>Read it Later User Since:</em> <%= current_user.user_since.strftime("%B %d, %Y") %> <br/> </br> Articles Saved: <%= current_user.count_list %>
     <br/> Articles Read: <%= current_user.count_read %> <br/> Articles Unread: <%= current_user.count_unread %></p>

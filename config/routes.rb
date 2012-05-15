@@ -14,6 +14,8 @@ InfographiclyApp::Application.routes.draw do
   get 'contact' => "pages#contact"
   get 'sources/:source' => "pages#show_source"
   get 'profile' => 'pages#profile'
+  get 'twitter' => 'pages#twitter'
+  match '/auth/:provider/callback', to: 'sessions#create'
   
   get "login" => "sessions#new"
   get "logout" => "sessions#logout"

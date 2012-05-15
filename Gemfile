@@ -9,6 +9,7 @@ gem 'kaminari'
 
 gem 'sqlite3'
 gem 'acts-as-taggable-on', '~> 2.2.2'
+gem 'omniauth-twitter'
 
 
 # Gems used only for assets and not required
@@ -40,4 +41,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'acts-as-taggable-on', '~> 2.2.2'
+
